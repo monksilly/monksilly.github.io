@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ResourcefulHands Changelog — MonkSilly</title>
+  <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+
+<div id="ticker-mount"></div>
+<div id="nav-mount"></div>
+
+<div class="page-wrap">
+  <section>
+
+    <nav class="breadcrumb" aria-label="Breadcrumb">
+      <a href="/">Home</a>
+      <span class="sep">/</span>
+      <a href="/changelogs/">Changelog</a>
+      <span class="sep">/</span>
+      <span class="current">ResourcefulHands</span>
+    </nav>
+
+    <div style="display:flex;align-items:flex-start;justify-content:space-between;flex-wrap:wrap;gap:1rem;margin-bottom:2.5rem;">
+      <div>
+        <span class="sec-label">// ResourcefulHands · Version History</span>
+        <h2 class="sec-title" style="margin-bottom:0.5rem;">RESOURCEFULHANDS</h2>
+        <div class="badges">
+          <span class="badge b-ver">v1.0.0</span>
+          <span class="badge b-stable">STABLE</span>
+        </div>
+      </div>
+      <div style="display:flex;gap:0.5rem;flex-wrap:wrap;align-items:center;">
+        <a href="https://thunderstore.io/c/white-knuckle/p/MonkSilly/" target="_blank" rel="noopener" class="btn btn-sm">Thunderstore ↗</a>
+        <a href="https://github.com/monksilly" target="_blank" rel="noopener" class="btn btn-ghost btn-sm">GitHub ↗</a>
+        <a href="/changelogs/" class="btn btn-ghost btn-sm">← All Changelogs</a>
+      </div>
+    </div>
+
+    <div class="cl-list">
+
+      <div class="cl-entry open" id="cl0">
+        <div class="cl-header" onclick="toggleCL('cl0')">
+          <span class="cl-version">v1.0.0</span>
+          <span class="cl-tag">Initial Release</span>
+          <span class="cl-date">2025-03-01</span>
+          <span class="cl-caret">▼</span>
+        </div>
+        <div class="cl-body">
+          <ul class="cl-items">
+            <li class="add">Initial public release on Thunderstore</li>
+            <li class="add">Extended hand interaction hook system</li>
+            <li class="add">Public API for mods to register custom hand behaviors — <code>ResourcefulHands.Register()</code></li>
+            <li class="add">Built-in behaviors: grab extension, weight simulation, tool attachment points</li>
+            <li class="fix">Fixed interaction triggers firing twice on certain ledge types</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Add new versions above this comment -->
+
+    </div>
+
+    <div style="margin-top:2.5rem;">
+      <a href="/changelogs/" class="btn btn-ghost btn-sm">← All Changelogs</a>
+    </div>
+
+  </section>
+</div>
+
+<div id="footer-mount"></div>
+<script src="/shared.js"></script>
+</body>
+</html>

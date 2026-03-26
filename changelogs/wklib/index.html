@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>WKLib Changelog — MonkSilly</title>
+  <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+
+<div id="ticker-mount"></div>
+<div id="nav-mount"></div>
+
+<div class="page-wrap">
+  <section>
+
+    <nav class="breadcrumb" aria-label="Breadcrumb">
+      <a href="/">Home</a>
+      <span class="sep">/</span>
+      <a href="/changelogs/">Changelog</a>
+      <span class="sep">/</span>
+      <span class="current">WKLib</span>
+    </nav>
+
+    <div style="display:flex;align-items:flex-start;justify-content:space-between;flex-wrap:wrap;gap:1rem;margin-bottom:2.5rem;">
+      <div>
+        <span class="sec-label">// WKLib · Version History</span>
+        <h2 class="sec-title" style="margin-bottom:0.5rem;">WKLIB</h2>
+        <div class="badges">
+          <span class="badge b-ver">v1.0.0</span>
+          <span class="badge b-stable">STABLE</span>
+          <span class="badge b-lib">LIBRARY</span>
+        </div>
+      </div>
+      <div style="display:flex;gap:0.5rem;flex-wrap:wrap;align-items:center;">
+        <a href="https://thunderstore.io/c/white-knuckle/p/MonkSilly/" target="_blank" rel="noopener" class="btn btn-sm">Thunderstore ↗</a>
+        <a href="https://github.com/monksilly" target="_blank" rel="noopener" class="btn btn-ghost btn-sm">GitHub ↗</a>
+        <a href="/changelogs/" class="btn btn-ghost btn-sm">← All Changelogs</a>
+      </div>
+    </div>
+
+    <!-- ══════════════════════════════════════════
+         HOW TO ADD A NEW VERSION ENTRY:
+         1. Copy the cl-entry block below
+         2. Change the id (cl0, cl1, cl2...) to the next number
+         3. Update version, date, and list items
+         4. Use class="add" for new features (+)
+                   class="fix" for fixes/changes (~)
+                   class="remove" for removals (−)
+         5. Add "open" to cl-entry class if you want it expanded by default
+    ═══════════════════════════════════════════ -->
+
+    <div class="cl-list">
+
+      <div class="cl-entry open" id="cl0">
+        <div class="cl-header" onclick="toggleCL('cl0')">
+          <span class="cl-version">v1.0.0</span>
+          <span class="cl-tag">Initial Release</span>
+          <span class="cl-date">2025-03-01</span>
+          <span class="cl-caret">▼</span>
+        </div>
+        <div class="cl-body">
+          <ul class="cl-items">
+            <li class="add">Initial public release on Thunderstore</li>
+            <li class="add">Core hook system for cross-mod interoperability</li>
+            <li class="add">Shared event bus — <code>WKLib.Events</code></li>
+            <li class="add">Utility helpers: config loading, asset registration, version checking</li>
+            <li class="add">Basic documentation published to GitHub wiki</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- TEMPLATE — copy this block to add a new version -->
+      <!--
+      <div class="cl-entry" id="cl1">
+        <div class="cl-header" onclick="toggleCL('cl1')">
+          <span class="cl-version">v1.1.0</span>
+          <span class="cl-tag">Short description</span>
+          <span class="cl-date">YYYY-MM-DD</span>
+          <span class="cl-caret">▼</span>
+        </div>
+        <div class="cl-body">
+          <ul class="cl-items">
+            <li class="add">New feature here</li>
+            <li class="fix">Fixed something here</li>
+            <li class="remove">Removed something here</li>
+          </ul>
+        </div>
+      </div>
+      -->
+
+    </div>
+
+    <div style="margin-top:2.5rem;">
+      <a href="/changelogs/" class="btn btn-ghost btn-sm">← All Changelogs</a>
+    </div>
+
+  </section>
+</div>
+
+<div id="footer-mount"></div>
+<script src="/shared.js"></script>
+</body>
+</html>

@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MonkSilly — White Knuckle Mod Team</title>
+  <meta name="description" content="MonkSilly — a crew of chaotic coders making mods for White Knuckle. WKLib, Custom Gamemodes, ResourcefulHands, WKMultiplayer.">
+  <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+
+<div id="ticker-mount"></div>
+<div id="nav-mount"></div>
+
+<!-- ═══════════════════════════════════════════════
+     HERO
+════════════════════════════════════════════════ -->
+<div id="hero">
+  <div class="hero-bg-text" aria-hidden="true">WK</div>
+  <div class="hero-shaft"   aria-hidden="true"></div>
+  <div class="climber"      aria-hidden="true" id="climber"></div>
+  <div class="hero-inner">
+    <p class="hero-eyebrow">// White Knuckle Mod Team &nbsp;·&nbsp; SUB-STRUCTURE 17</p>
+    <h1 class="hero-title">
+      MONK<span class="c-yellow">SILLY</span><br>
+      <span class="c-red">MOD</span> TEAM
+    </h1>
+    <p class="hero-sub">A crew of chaotic coders doing incredibly silly things inside White Knuckle's SUB-STRUCTURE 17. We climb, we code, we break things — mostly on purpose.</p>
+    <div class="hero-ctas">
+      <a href="/mods/"       class="btn">View Our Mods</a>
+      <a href="https://thunderstore.io/c/white-knuckle/p/MonkSilly/" target="_blank" rel="noopener" class="btn btn-ghost">Thunderstore ↗</a>
+      <a href="https://discord.gg/EbHdwEhjgY"                        target="_blank" rel="noopener" class="btn btn-red">Join Discord</a>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════
+     QUICK LINKS
+════════════════════════════════════════════════ -->
+<div class="page-wrap">
+  <section>
+    <span class="sec-label">// Explore</span>
+    <h2 class="sec-title">WHAT'S HERE</h2>
+    <div style="display:grid; grid-template-columns: repeat(auto-fill, minmax(220px,1fr)); gap:3px; background:var(--border); border:3px solid var(--border);">
+
+      <a href="/mods/" style="display:block; background:var(--surface); padding:1.75rem; border:2px solid transparent; transition:all 0.12s; text-decoration:none;"
+         onmouseover="this.style.borderColor='var(--yellow)';this.style.background='var(--surface2)'"
+         onmouseout="this.style.borderColor='transparent';this.style.background='var(--surface)'">
+        <div style="font-family:'Press Start 2P',monospace;font-size:7px;color:var(--yellow);margin-bottom:0.6rem;letter-spacing:0.1em;">MODS</div>
+        <div style="font-family:'Bebas Neue',sans-serif;font-size:2rem;color:var(--white);margin-bottom:0.4rem;">4 Mods</div>
+        <div style="font-size:12px;color:var(--gray);">WKLib, Custom Gamemodes, ResourcefulHands, WKMultiplayer</div>
+      </a>
+
+      <a href="/roadmap/" style="display:block; background:var(--surface); padding:1.75rem; border:2px solid transparent; transition:all 0.12s; text-decoration:none;"
+         onmouseover="this.style.borderColor='var(--yellow)';this.style.background='var(--surface2)'"
+         onmouseout="this.style.borderColor='transparent';this.style.background='var(--surface)'">
+        <div style="font-family:'Press Start 2P',monospace;font-size:7px;color:var(--yellow);margin-bottom:0.6rem;letter-spacing:0.1em;">ROADMAP</div>
+        <div style="font-family:'Bebas Neue',sans-serif;font-size:2rem;color:var(--white);margin-bottom:0.4rem;">What's Next</div>
+        <div style="font-size:12px;color:var(--gray);">3 phases of increasingly silly plans</div>
+      </a>
+
+      <a href="/devlogs/" style="display:block; background:var(--surface); padding:1.75rem; border:2px solid transparent; transition:all 0.12s; text-decoration:none;"
+         onmouseover="this.style.borderColor='var(--yellow)';this.style.background='var(--surface2)'"
+         onmouseout="this.style.borderColor='transparent';this.style.background='var(--surface)'">
+        <div style="font-family:'Press Start 2P',monospace;font-size:7px;color:var(--yellow);margin-bottom:0.6rem;letter-spacing:0.1em;">DEVLOG</div>
+        <div style="font-family:'Bebas Neue',sans-serif;font-size:2rem;color:var(--white);margin-bottom:0.4rem;">Behind The Scenes</div>
+        <div style="font-size:12px;color:var(--gray);">Developer write-ups, deep dives, and disasters</div>
+      </a>
+
+      <a href="/changelogs/" style="display:block; background:var(--surface); padding:1.75rem; border:2px solid transparent; transition:all 0.12s; text-decoration:none;"
+         onmouseover="this.style.borderColor='var(--yellow)';this.style.background='var(--surface2)'"
+         onmouseout="this.style.borderColor='transparent';this.style.background='var(--surface)'">
+        <div style="font-family:'Press Start 2P',monospace;font-size:7px;color:var(--yellow);margin-bottom:0.6rem;letter-spacing:0.1em;">CHANGELOG</div>
+        <div style="font-family:'Bebas Neue',sans-serif;font-size:2rem;color:var(--white);margin-bottom:0.4rem;">What Changed</div>
+        <div style="font-size:12px;color:var(--gray);">Per-mod version history, every release</div>
+      </a>
+
+    </div>
+  </section>
+</div>
+
+<div id="footer-mount"></div>
+
+<script src="/shared.js"></script>
+<script>
+  /* pixel-art climber */
+  (function() {
+    var c = document.createElement('canvas');
+    c.width=64; c.height=80;
+    c.style.cssText='width:64px;height:80px;image-rendering:pixelated;';
+    var ctx=c.getContext('2d');
+    var px=function(x,y,col,w,h){ctx.fillStyle=col;ctx.fillRect(x*4,y*4,(w||1)*4,(h||1)*4);};
+    px(3,0,'#c4853a',4,4); // head
+    px(4,1,'#0f0e0c'); px(5,1,'#0f0e0c'); // eyes
+    px(3,4,'#FFE135',4,4); // body
+    px(1,1,'#c4853a',2,3); px(7,1,'#c4853a',2,3); // arms
+    px(1,0,'#F0EDE5',2,2); px(7,0,'#F0EDE5',2,2); // hands
+    px(3,8,'#c4853a',2,4); px(5,8,'#c4853a',2,4); // legs
+    px(2,12,'#FF3B1F',2,2); px(5,12,'#FF3B1F',2,2); // feet
+    document.getElementById('climber').appendChild(c);
+  })();
+</script>
+</body>
+</html>

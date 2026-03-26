@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- EDIT: Update title for each post -->
+  <title>WKMultiplayer: How We're Making It Work — MonkSilly Devlog #001</title>
+  <meta name="description" content="A deep dive into the Steam P2P netcode powering WKMultiplayer — the MonkSilly co-op mod for White Knuckle.">
+  <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+
+<div id="ticker-mount"></div>
+<div id="nav-mount"></div>
+
+<div class="page-wrap">
+  <section>
+
+    <!-- Breadcrumb -->
+    <nav class="breadcrumb" aria-label="Breadcrumb">
+      <a href="/">Home</a>
+      <span class="sep">/</span>
+      <a href="/devlogs/">Devlog</a>
+      <span class="sep">/</span>
+      <!-- EDIT: Update the current post title here -->
+      <span class="current">WKMultiplayer: How We're Making It Work</span>
+    </nav>
+
+    <div class="article-wrap">
+
+      <!-- EDIT: Post header -->
+      <div style="margin-bottom:2.5rem;">
+        <div style="font-family:'Press Start 2P',monospace;font-size:7px;color:var(--yellow);letter-spacing:0.12em;margin-bottom:0.6rem;">DEVLOG #001</div>
+        <h1 class="article-title">WKMultiplayer:<br>How We're Making It Work</h1>
+      </div>
+
+      <!-- EDIT: Author info -->
+      <div class="article-byline">
+        <span>By <strong>galfar.exe</strong></span>
+        <span>Network Code Guy · he/him or they/them</span>
+        <!-- EDIT: Update date -->
+        <span>2025-03-01</span>
+      </div>
+
+      <!-- ══════════════════════════════════════════
+           EDIT: Post body starts here.
+           Use <h2> for major sections.
+           Use <h3> for subsections.
+           Use <p> for paragraphs.
+           Use <code> for inline code.
+           Use <pre><code> for code blocks.
+           Use <blockquote> for callouts.
+      ═══════════════════════════════════════════ -->
+      <div class="article-body">
+
+        <p>Getting two players climbing the same shaft in White Knuckle simultaneously is — to put it gently — not something Dark Machine designed the engine to support. The game was built around one set of hands, one set of inputs, one simulation. We're dragging co-op into SUB-STRUCTURE 17 whether the codebase likes it or not.</p>
+
+        <h2>The Core Problem</h2>
+
+        <p>White Knuckle's physics are tight. Your grip, your momentum, the ledges you grab — it's all deeply local. There's no built-in concept of "another player exists." So step one of WKMultiplayer was figuring out what we even needed to sync.</p>
+
+        <p>The answer: position, grip state, held objects, and velocity. Everything else — animations, particle effects, sounds — can be derived or run locally. We're not trying to sync the entire simulation, just the parts that matter for shared gameplay.</p>
+
+        <h3>Why Steam P2P?</h3>
+
+        <p>We're using GodotSteam's P2P networking layer, specifically <code>SteamNetworkingMessages</code>. No dedicated server, no port forwarding, no headache. The host runs the authoritative simulation; the peer does client prediction and gets corrected on tick.</p>
+
+        <blockquote>The host is always right. The peer is usually right. When they disagree, we yell at the peer until it agrees.</blockquote>
+
+        <p>In practice this means the host's world state is the source of truth. Every N milliseconds (currently 50ms, so 20 ticks/sec), the host serializes the relevant state, sends a delta to the peer, and the peer reconciles. If the peer predicted wrong, it snaps to the corrected state. There's a tiny rubber-banding effect on bad connections that we're working on smoothing out.</p>
+
+        <h2>What's Actually Working</h2>
+
+        <p>As of RC-001:</p>
+
+        <ul style="color:var(--gray);padding-left:1.5rem;margin-bottom:1.25rem;display:flex;flex-direction:column;gap:0.4rem;font-size:14px;line-height:1.9;">
+          <li>Two players can load into the same run</li>
+          <li>Position sync is live — you can see each other move</li>
+          <li>Grip state syncs (you can see each other grab ledges)</li>
+          <li>Basic collision awareness (you can't clip through each other... most of the time)</li>
+        </ul>
+
+        <p>What's not working yet: object interaction sync, death/respawn coordination, and there's a bug where if you fall at the exact same moment as the host the game just gives up and goes home. We're aware.</p>
+
+        <h3>The RC Build</h3>
+
+        <p>If you want to test this in its current chaotic state, grab the latest RC from our GitHub Releases. You'll need two copies of White Knuckle, a friend who's also willing to crash the game for science, and low expectations. The bar is: does it feel like co-op? Mostly yes. Does it sometimes fling you into the void? Also yes.</p>
+
+        <h2>What's Next</h2>
+
+        <p>Before we ship on Thunderstore we need: stable object sync, proper disconnect handling, and at least one full run from bottom to top without a crash. That last one is taking a while. colling is providing emotional support. Cass has already refactored the tick loop twice. We're getting there.</p>
+
+        <p>More updates coming. Until then — keep climbing.</p>
+
+      </div><!-- /article-body -->
+
+      <!-- Post navigation -->
+      <div class="article-nav">
+        <a href="/devlogs/" class="btn btn-ghost btn-sm">← All Devlogs</a>
+        <!-- EDIT: Link to next/prev post when they exist -->
+        <!-- <a href="/devlogs/002-xxx/" class="btn btn-ghost btn-sm">Next Post →</a> -->
+      </div>
+
+    </div><!-- /article-wrap -->
+  </section>
+</div>
+
+<div id="footer-mount"></div>
+<script src="/shared.js"></script>
+</body>
+</html>
