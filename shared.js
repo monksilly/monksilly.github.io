@@ -18,11 +18,11 @@
   /* ── Ticker messages ── */
   const TICKS = [
     'WKMultiplayer is in active development',
-    'ResourcefulHands — now on Thunderstore',
-    'WKLib v1.0 — the backbone of MonkSilly mods',
-    'Custom Gamemodes — break the rules, on purpose',
+    'ResourcefulHands (Continued) — now on Thunderstore',
+    'WKLib v0.0.4 — the backbone of MonkSilly mods',
+    'Custom Gamemodes — bend the rules, on purpose',
     'RC builds available on GitHub Releases',
-    'Join the MonkSilly Discord',
+    'Join the MonkSilly Discord :3',
     'White Knuckle modding is not a crime (probably)',
     'galfar.exe is fixing something right now, probably',
     'colling provides emotional support. it helps.',
