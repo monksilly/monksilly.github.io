@@ -139,9 +139,9 @@ section { padding: 5rem 2rem; max-width: 1120px; margin: 0 auto; }
 
 /* ── Mods ── */
 .mods-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 3px; background: var(--border); border: 3px solid var(--border); }
-.mod-card { background: var(--surface); padding: 1.75rem; border: 2px solid transparent; transition: all 0.12s; }
-.mod-card:hover { border-color: var(--yellow); background: var(--surface2); }
-.mod-card.mod-wip { border-color: rgba(255,59,31,0.2); }
+.mod-card { background: var(--surface); padding: 1.75rem; border: 2px solid var(--border); border-bottom: 4px solid var(--border); transition: all 0.12s; cursor: default; }
+.mod-card:hover { border-color: var(--yellow); border-bottom-color: var(--yellow); background: var(--surface2); }
+.mod-card.mod-wip { border-bottom-color: var(--red); }
 .mod-card.mod-wip:hover { border-color: var(--red); }
 .mod-head { display: flex; justify-content: space-between; align-items: flex-start; gap: 0.75rem; margin-bottom: 0.75rem; flex-wrap: wrap; }
 .mod-name { font-family: 'Bebas Neue', sans-serif; font-size: 2.1rem; line-height: 1; color: var(--white); }
@@ -177,8 +177,9 @@ section { padding: 5rem 2rem; max-width: 1120px; margin: 0 auto; }
 
 /* ── Devlog list ── */
 .devlog-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 3px; background: var(--border); border: 3px solid var(--border); }
-.devlog-card { background: var(--surface); padding: 1.75rem; border: 2px solid transparent; transition: all 0.12s; text-decoration: none; display: block; }
-.devlog-card:hover { border-color: var(--yellow); background: var(--surface2); transform: translate(-2px,-2px); box-shadow: 4px 4px 0 var(--yellow); text-decoration: none; }
+.devlog-card { background: var(--surface); padding: 1.75rem; border: 2px solid var(--border); border-bottom: 4px solid var(--yellow); transition: all 0.12s; text-decoration: none; display: block; cursor: pointer; }
+.devlog-card:hover  { border-color: var(--yellow); background: var(--surface2); transform: translate(-2px,-2px); box-shadow: 4px 4px 0 var(--yellow); text-decoration: none; }
+.devlog-card:active { transform: translate(1px,1px); box-shadow: 1px 1px 0 var(--yellow); }
 .devlog-num { font-family: 'Press Start 2P', monospace; font-size: 7px; color: var(--yellow); letter-spacing: 0.12em; margin-bottom: 0.6rem; }
 .devlog-title { font-family: 'Bebas Neue', sans-serif; font-size: 1.9rem; color: var(--white); line-height: 1.05; margin-bottom: 0.6rem; }
 .devlog-excerpt { font-size: 12px; color: var(--gray); line-height: 1.7; margin-bottom: 1rem; }
@@ -213,8 +214,11 @@ section { padding: 5rem 2rem; max-width: 1120px; margin: 0 auto; }
 
 /* ── Changelog hub ── */
 .cl-hub-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px,1fr)); gap: 3px; background: var(--border); border: 3px solid var(--border); }
-.cl-hub-card { background: var(--surface); padding: 1.75rem; border: 2px solid transparent; transition: all 0.12s; display: block; text-decoration: none; }
-.cl-hub-card:hover { border-color: var(--yellow); background: var(--surface2); transform: translate(-2px,-2px); box-shadow: 4px 4px 0 var(--yellow); text-decoration: none; }
+.cl-hub-card { background: var(--surface); padding: 1.75rem; border: 2px solid var(--border); border-bottom: 4px solid var(--yellow); transition: all 0.12s; display: block; text-decoration: none; cursor: pointer; }
+.cl-hub-card:hover  { border-color: var(--yellow); background: var(--surface2); transform: translate(-2px,-2px); box-shadow: 4px 4px 0 var(--yellow); text-decoration: none; }
+.cl-hub-card:active { transform: translate(1px,1px); box-shadow: 1px 1px 0 var(--yellow); }
+.cl-hub-card.wip { border-bottom-color: var(--red); }
+.cl-hub-card.wip:hover { border-color: var(--red); box-shadow: 4px 4px 0 var(--red); }
 .cl-hub-name { font-family: 'Bebas Neue', sans-serif; font-size: 2rem; color: var(--white); margin-bottom: 0.5rem; }
 .cl-hub-desc { font-size: 12px; color: var(--gray); line-height: 1.65; margin-bottom: 1rem; }
 .cl-hub-latest { font-family: 'Press Start 2P', monospace; font-size: 7px; color: var(--gray); }
@@ -270,12 +274,55 @@ footer { border-top: 3px solid var(--border); padding: 1.5rem 2rem; }
 @keyframes climberBob { 0%,100%{transform:translateY(-50%);} 50%{transform:translateY(calc(-50% - 8px));} }
 
 /* ── Responsive ── */
+/* ── Hamburger button ── */
+.nav-burger {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  gap: 5px;
+  width: 36px; height: 36px;
+  background: none; border: 2px solid var(--border);
+  cursor: pointer; padding: 6px;
+  transition: border-color 0.1s;
+  flex-shrink: 0;
+}
+.nav-burger:hover { border-color: var(--yellow); }
+.nav-burger span {
+  display: block; width: 100%; height: 2px;
+  background: var(--white); transition: all 0.2s;
+}
+/* X state */
+.nav-burger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+.nav-burger.open span:nth-child(2) { opacity: 0; }
+.nav-burger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
 @media (max-width: 860px) {
   .mods-grid { grid-template-columns: 1fr; }
   .team-grid { grid-template-columns: 1fr; }
-  .nav-links { display: none; }
   .hero-bg-text, .climber, .hero-shaft { display: none; }
   section { padding: 3.5rem 1.25rem; }
+
+  .nav-burger { display: flex; }
+
+  .nav-links {
+    display: none;
+    position: absolute;
+    top: 58px; left: 0; right: 0;
+    background: var(--bg);
+    border-bottom: 3px solid var(--yellow);
+    flex-direction: column;
+    gap: 0; z-index: 99;
+  }
+  .nav-links.open { display: flex; }
+  .nav-links a {
+    padding: 14px 2rem;
+    border: none;
+    border-bottom: 1px solid var(--border);
+    font-size: 12px;
+  }
+  .nav-links a:last-child { border-bottom: none; }
+
+  nav { position: sticky; } /* ensure dropdown is relative to nav */
 }
 @media (max-width: 560px) {
   .rm-cards, .devlog-grid, .cl-hub-grid { grid-template-columns: 1fr; }

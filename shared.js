@@ -18,11 +18,11 @@
   /* ── Ticker messages ── */
   const TICKS = [
     'WKMultiplayer is in active development',
-    'ResourcefulHands (Continued) — now on Thunderstore',
-    'WKLib v0.0.4 — the backbone of MonkSilly mods',
-    'Custom Gamemodes — bend the rules, on purpose',
+    'ResourcefulHands — now on Thunderstore',
+    'WKLib v1.0 — the backbone of MonkSilly mods',
+    'Custom Gamemodes — break the rules, on purpose',
     'RC builds available on GitHub Releases',
-    'Join the MonkSilly Discord :3',
+    'Join the MonkSilly Discord',
     'White Knuckle modding is not a crime (probably)',
     'galfar.exe is fixing something right now, probably',
     'colling provides emotional support. it helps.',
@@ -53,8 +53,28 @@
     }).join('');
     n.outerHTML = `<nav>
       <a class="nav-logo" href="/" id="navLogo">MONKSILLY</a>
-      <ul class="nav-links">${links}</ul>
+      <ul class="nav-links" id="navLinks">${links}</ul>
+      <button class="nav-burger" id="navBurger" aria-label="Toggle menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
     </nav>`;
+
+    /* wire up toggle */
+    const burger = document.getElementById('navBurger');
+    const navLinks = document.getElementById('navLinks');
+    burger.addEventListener('click', () => {
+      const open = navLinks.classList.toggle('open');
+      burger.classList.toggle('open', open);
+      burger.setAttribute('aria-expanded', open);
+    });
+    /* close on link click */
+    navLinks.querySelectorAll('a').forEach(a => {
+      a.addEventListener('click', () => {
+        navLinks.classList.remove('open');
+        burger.classList.remove('open');
+        burger.setAttribute('aria-expanded', false);
+      });
+    });
   }
 
   /* ── Build footer ── */
@@ -64,7 +84,7 @@
     f.outerHTML = `<footer>
       <div class="footer-inner">
         <div class="footer-logo">MONKSILLY</div>
-        <div>Not affiliated with Dark Machine Games. White Knuckle&trade; is theirs. The silly mods are ours.</div>
+        <div style="max-width: 60%;">We are not Dark Machine Games. White Knuckle™ belongs entirely to them. We’re just out here making silly mods and hoping for the best. Not an official product, but definitely an official vibe. :3</div>
         <span class="secret-px" id="spx" title="..."></span>
       </div>
     </footer>`;
