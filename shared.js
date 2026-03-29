@@ -84,7 +84,7 @@
     f.outerHTML = `<footer>
       <div class="footer-inner">
         <div class="footer-logo">MONKSILLY</div>
-        <div style="max-width: 60%;">We are not Dark Machine Games. White Knuckle™ belongs entirely to them. We’re just out here making silly mods and hoping for the best. Not an official product, but definitely an official vibe. :3</div>
+        <div style="max-width: fit;">MonkSilly Team is not affiliated with Dark Machine Games or DreadXP. White Knuckle™ is a trademark of its respective owners. Content is subject to all applicable licenses and copyright laws. We take our code seriously but our sanity is strictly optional.</div>
         <span class="secret-px" id="spx" title="..."></span>
       </div>
     </footer>`;
