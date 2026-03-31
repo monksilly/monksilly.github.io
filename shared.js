@@ -25,7 +25,7 @@
     'Join the MonkSilly Discord',
     'White Knuckle modding is not a crime (probably)',
     'galfar.exe is fixing something right now, probably',
-    'colling provides emotional support. it helps.',
+    'collin provides emotional support. it helps.',
     'Cass is architecting something ungodly',
     'SUB-STRUCTURE 17 has never been sillier',
     'grab early RC builds before they explode',
@@ -98,7 +98,7 @@
     k.innerHTML = `<div class="konami-box" onclick="event.stopPropagation()">
       <div class="konami-title">YOU FOUND<br>THE CODE</div>
       <p class="konami-msg">Wow. You actually did the Konami code on a mod team website.<br><br>
-        galfar.exe is fixing a crash right now. colling is providing emotional support about it.
+        galfar.exe is fixing a crash right now. collin is providing emotional support about it.
         Cass has already refactored the whole thing.<br><br>Thanks for being silly with us. 🐒</p>
       <button class="btn" onclick="document.getElementById('konamiOverlay').classList.remove('show')">[ CLOSE ]</button>
     </div>`;
